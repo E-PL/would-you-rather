@@ -5,23 +5,18 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
 import { createStore, compose } from 'redux';
-import { Provider } from "react-redux";
+import { Provider } from 'react-redux';
 import reducer from './reducers';
 import middleware from './middleware';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer, /* preloadedState, */ composeEnhancers(
-    middleware
-  ));
-
-
+const store = createStore(reducer, composeEnhancers(middleware));
 
 ReactDOM.render(
-  
-    <Provider store={store}>
+  <Provider store={store}>
     <App />
-    </Provider>,
- 
+  </Provider>,
+
   document.getElementById('root')
 );
 
