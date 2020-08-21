@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setLoggedInUser } from '../actions/loggedinuser';
+import { logout } from '../actions/loggedinuser';
 import { Link } from 'react-router-dom';
 
 export default function Nav(props) {
@@ -23,7 +23,7 @@ export default function Nav(props) {
             Hi {props.loggedInUser.name}{' '}
             <button
               onClick={() => {
-                dispatch(setLoggedInUser(null));
+                dispatch(logout());
               }}
             >
               Logout

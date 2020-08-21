@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import Login from './Login';
 import Nav from './Nav';
+import Poll from './Poll'
 
 export default function App() {
   const dispatch = useDispatch();
@@ -19,11 +20,18 @@ export default function App() {
     <Router>
       <Nav loggedInUser={loggedInUser} />
       <Switch>
-        <Route
-          path="/"
-          exact
-          component={loggedInUser ? Dashboard : Login}
-        ></Route>
+      <Route path="/questions/">
+           { loggedInUser ? <Poll loggedInUser={loggedInUser} /> : <Login/>}
+          </Route>
+        {loggedInUser ? (
+          <Route path="/" exact>
+            <Dashboard loggedInUser={loggedInUser} />
+          </Route>
+        ) : (
+          <Route path="/" exact>
+            <Login />
+          </Route>
+        )}
       </Switch>
       <footer>footer</footer>
     </Router>

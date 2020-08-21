@@ -6,4 +6,3 @@ export function getUsers(users) {
     users,
   };
 }
-
