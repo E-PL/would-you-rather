@@ -2,6 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation, useRouteMatch } from 'react-router-dom';
 import Answer from './Answer';
+import Notfound from './Notfound';
+import {Route} from 'react-router-dom'
+import Avatar from './Avatar'
 
 export default function Poll(props) {
   const path = useLocation();
@@ -15,8 +18,9 @@ export default function Poll(props) {
   return (
     <>
       {questionId}
-      {question && (
+      {question ? (
         <>
+        <Avatar avatarUrl={users[question.author].avatarURL}/>
           <h2>{users[question.author].name} asks:</h2>
 
           <Answer
@@ -25,6 +29,8 @@ export default function Poll(props) {
             loggedInUser={props.loggedInUser}
           />
         </>
+      ) : (
+        <Route path="*" component={Notfound}/>
       )}
     </>
   );

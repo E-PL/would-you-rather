@@ -16,7 +16,7 @@ export default function Nav(props) {
           <Link to="/">New poll</Link>
         </li>
         <li>
-          <Link to="/">Leaderboard</Link>
+          <Link to="/leaderboard/">Leaderboard</Link>
         </li>
         {props.loggedInUser && (
           <li>

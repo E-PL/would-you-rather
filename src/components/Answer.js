@@ -37,16 +37,18 @@ export default function Answer(props) {
           disabled={userAnswered}
           onChange={(e) => setVote(e.target.value)}
         />
-        <label for="option-one-input">{props.optionOne.text}</label>
+        <label htmlFor="option-one-input">{props.optionOne.text}</label>
 
-        <span>
-          {props.optionOne.votes.length} votes -{'  '}
-          {votesPercentage(
-            props.optionOne.votes.length,
-            props.optionTwo.votes.length
-          )}
-          %
-        </span>
+        {userAnswered && (
+          <span>
+            {props.optionOne.votes.length} votes -{'  '}
+            {votesPercentage(
+              props.optionOne.votes.length,
+              props.optionTwo.votes.length
+            )}
+            %
+          </span>
+        )}
         {userAnsweredTwo && <span> Your answer:</span>}
         <input
           type="radio"
@@ -57,16 +59,17 @@ export default function Answer(props) {
           disabled={userAnswered}
           onChange={(e) => setVote(e.target.value)}
         />
-        <label for="option-two-input">{props.optionTwo.text}</label>
-        <span>
-          {props.optionTwo.votes.length} votes -{'  '}
-          {votesPercentage(
-            props.optionTwo.votes.length,
-            props.optionOne.votes.length
-          )}
-          %
-        </span>
-
+        <label htmlFor="option-two-input">{props.optionTwo.text}</label>
+        {userAnswered && (
+          <span>
+            {props.optionTwo.votes.length} votes -{'  '}
+            {votesPercentage(
+              props.optionTwo.votes.length,
+              props.optionOne.votes.length
+            )}
+            %
+          </span>
+        )}
         {!userAnswered && (
           <button type="submit" value="submit">
             Vote

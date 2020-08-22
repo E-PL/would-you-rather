@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Avatar from './Avatar'
 
 export default function PollCard(props) {
   let questionDate = new Date(props.question.timestamp);
@@ -8,6 +9,7 @@ export default function PollCard(props) {
   });
   return (
     <>
+      <Avatar avatarUrl={props.users[props.question.author].avatarURL}/>
       <h2>
         {props.users[props.question.author].name} asked on {questionDateString}
       </h2>
