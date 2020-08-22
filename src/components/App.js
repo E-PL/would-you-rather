@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { populateStore } from '../actions/shared';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Dashboard from './Dashboard';
+import Leaderboard from './Leaderboard';
 import Login from './Login';
 import Nav from './Nav';
-import Poll from './Poll'
+import Poll from './Poll';
+import Notfound from './Notfound';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -20,18 +22,21 @@ export default function App() {
     <Router>
       <Nav loggedInUser={loggedInUser} />
       <Switch>
-      <Route path="/questions/">
-           { loggedInUser ? <Poll loggedInUser={loggedInUser} /> : <Login/>}
-          </Route>
-        {loggedInUser ? (
-          <Route path="/" exact>
-            <Dashboard loggedInUser={loggedInUser} />
-          </Route>
-        ) : (
-          <Route path="/" exact>
+        <Route path="/" exact>
+          {loggedInUser ? <Dashboard loggedInUser={loggedInUser} /> : <Login />}
+        </Route>
+        <Route path="/leaderboard/" exact>
+          {loggedInUser ? (
+            <Leaderboard loggedInUser={loggedInUser} />
+          ) : (
             <Login />
-          </Route>
-        )}
+          )}
+        </Route>
+        <Route path="/questions/">
+          {loggedInUser ? <Poll loggedInUser={loggedInUser} /> : <Login />}
+        </Route>
+
+        <Route path="*" component={Notfound} />
       </Switch>
       <footer>footer</footer>
     </Router>
