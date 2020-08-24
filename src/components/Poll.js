@@ -24,6 +24,7 @@ export default function Poll(props) {
           <h2>{users[question.author].name} asks:</h2>
 
           <Answer
+            questionId={questionId}
             optionOne={question.optionOne}
             optionTwo={question.optionTwo}
             loggedInUser={props.loggedInUser}
