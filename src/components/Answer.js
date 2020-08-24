@@ -1,12 +1,38 @@
 import React, { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { handleSetAnswerOne, handleSetAnswerTwo } from '../actions/shared';
 export default function Answer(props) {
+  const dispatch = useDispatch();
+
   const [vote, setVote] = useState([]);
 
   function handleVote(e) {
     alert("E' stato inserito un nome: " + vote);
 
     e.preventDefault();
+    const userAnswersOne = vote === 'OptionOne';
+    console.log(userAnswersOne)
+    console.log(vote)
+    if (userAnswersOne){
+      console.log('predispatch');
+    dispatch(
+      handleSetAnswerOne({
+        questionId: props.questionId,
+        userId: props.loggedInUser.id,
+        vote: 'optionOne'
+      })
+    );}
+    
+    if (!userAnswersOne){
+      console.log('predispatch');
+    dispatch(
+      handleSetAnswerTwo({
+        questionId: props.questionId,
+        userId: props.loggedInUser.id,
+        vote: 'optionTwo'
+      })
+    );}
+    
   }
 
   const userAnsweredOne = props.optionOne.votes.includes(props.loggedInUser.id);

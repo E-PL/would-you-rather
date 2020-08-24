@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PollCard from './PollCard';
 
 export default function QuestionsList(props) {
   const questionsKeys = Object.keys(props.questions);
-  const answeredQuestionsKeys = Object.keys(props.loggedInUser.answers);
+  const answeredQuestionsKeys = Object.keys(props.users[props.loggedInUser.id].answers);
   return (
     <main>
       <h2>{props.answered ? 'Answered polls' : 'Unanswered polls'}</h2>
