@@ -1,9 +1,11 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import PollCard from './PollCard';
 
 export default function QuestionsList(props) {
   const questionsKeys = Object.keys(props.questions);
-  const answeredQuestionsKeys = Object.keys(props.users[props.loggedInUser.id].answers);
+  const answeredQuestionsKeys = Object.keys(
+    props.users[props.loggedInUser.id].answers
+  );
   return (
     <main>
       <h2>{props.answered ? 'Answered polls' : 'Unanswered polls'}</h2>
@@ -19,15 +21,13 @@ export default function QuestionsList(props) {
             })
             .map((filteredQuestionId) => {
               return (
-               
-                  <PollCard
+                <PollCard
                   key={filteredQuestionId}
-                    id={filteredQuestionId}
-                    question={props.questions[filteredQuestionId]}
-                    loggedInUser={props.loggedInUser}
-                    users={props.users}
-                  />
-               
+                  id={filteredQuestionId}
+                  question={props.questions[filteredQuestionId]}
+                  loggedInUser={props.loggedInUser}
+                  users={props.users}
+                />
               );
             })
         : questionsKeys
@@ -41,15 +41,13 @@ export default function QuestionsList(props) {
             })
             .map((filteredQuestionId) => {
               return (
-              
-                  <PollCard
+                <PollCard
                   key={filteredQuestionId}
-                    id={filteredQuestionId}
-                    question={props.questions[filteredQuestionId]}
-                    loggedInUser={props.loggedInUser}
-                    users={props.users}
-                  />
-                
+                  id={filteredQuestionId}
+                  question={props.questions[filteredQuestionId]}
+                  loggedInUser={props.loggedInUser}
+                  users={props.users}
+                />
               );
             })}
     </main>
