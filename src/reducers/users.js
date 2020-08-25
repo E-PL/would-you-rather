@@ -1,6 +1,9 @@
-import { RECEIVE_USERS } from '../actions/users';
-import { SET_USER_ANSWER } from '../actions/users';
-import { UNSET_USER_ANSWER } from '../actions/users';
+import {
+  RECEIVE_USERS,
+  SET_USER_ANSWER,
+  UNSET_USER_ANSWER,
+  SET_USER_QUESTIONS,
+} from '../actions/users';
 
 export default function users(state = {}, action) {
   switch (action.type) {
@@ -22,6 +25,8 @@ export default function users(state = {}, action) {
           },
         },
       };
+
+
     case UNSET_USER_ANSWER:
       return {
         ...state,
@@ -37,6 +42,15 @@ export default function users(state = {}, action) {
             }, {}),
         },
       };
+
+      case SET_USER_QUESTIONS:
+        return {
+          ...state,
+          [action.userId]: {
+            ...state[action.userId], 
+            questions: state[action.userId].questions.concat(action.questionId),
+          },
+        };
 
     default:
       return {

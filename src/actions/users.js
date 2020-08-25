@@ -1,6 +1,7 @@
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const SET_USER_ANSWER = 'SET_USER_ANSWER';
 export const UNSET_USER_ANSWER = 'UNSET_USER_ANSWER';
+export const SET_USER_QUESTIONS = 'SET_USER_QUESTIONS';
 
 export function getUsers(users) {
   return {
@@ -18,5 +19,11 @@ export function unsaveUserAnswer({ questionId, userId, vote }) {
   return {
     type: UNSET_USER_ANSWER,
     userId, questionId, vote,
+  };
+}
+export function setUserQuestions( questionId, userId ) {
+  return {
+    type: SET_USER_QUESTIONS,
+    userId, questionId,
   };
 }

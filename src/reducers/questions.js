@@ -81,6 +81,7 @@ export default function questions(state = {}, action) {
       return {
         ...state,
         [action.id]: {
+          id: action.id,
           author: action.author,
           optionOne: action.optionOne,
           optionTwo: action.optionTwo,
