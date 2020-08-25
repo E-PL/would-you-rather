@@ -4,6 +4,7 @@ import { populateStore } from '../actions/shared';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import Leaderboard from './Leaderboard';
+import NewQuestion from './Newquestion';
 import Login from './Login';
 import Nav from './Nav';
 import Poll from './Poll';
@@ -28,6 +29,13 @@ export default function App() {
         <Route path="/leaderboard/" exact>
           {loggedInUser ? (
             <Leaderboard loggedInUser={loggedInUser} />
+          ) : (
+            <Login />
+          )}
+        </Route>
+        <Route path="/new-question/" exact>
+          {loggedInUser ? (
+            <NewQuestion loggedInUser={loggedInUser} />
           ) : (
             <Login />
           )}

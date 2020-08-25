@@ -3,6 +3,7 @@ import { SET_QUESTION_ANSWER_ONE } from '../actions/questions';
 import { UNSET_QUESTION_ANSWER_ONE } from '../actions/questions';
 import { SET_QUESTION_ANSWER_TWO } from '../actions/questions';
 import { UNSET_QUESTION_ANSWER_TWO } from '../actions/questions';
+import { SET_QUESTION } from '../actions/questions';
 
 export default function questions(state = {}, action) {
   switch (action.type) {
@@ -27,7 +28,7 @@ export default function questions(state = {}, action) {
           },
         },
       };
-      
+
     case UNSET_QUESTION_ANSWER_ONE:
       return {
         ...state,
@@ -38,7 +39,7 @@ export default function questions(state = {}, action) {
             ...state[action.questionId].optionOne,
 
             votes: state[action.questionId].optionOne.votes.filter((votes) => {
-              return votes !==action.userId
+              return votes !== action.userId;
             }),
           },
         },
@@ -60,7 +61,7 @@ export default function questions(state = {}, action) {
         },
       };
 
-      case UNSET_QUESTION_ANSWER_TWO:
+    case UNSET_QUESTION_ANSWER_TWO:
       return {
         ...state,
         [action.questionId]: {
@@ -70,9 +71,20 @@ export default function questions(state = {}, action) {
             ...state[action.questionId].optionOne,
 
             votes: state[action.questionId].optionTwo.votes.filter((votes) => {
-              return votes !==action.userId
+              return votes !== action.userId;
             }),
           },
+        },
+      };
+
+    case SET_QUESTION:
+      return {
+        ...state,
+        [action.id]: {
+          author: action.author,
+          optionOne: action.optionOne,
+          optionTwo: action.optionTwo,
+          timestamp: action.timestamp,
         },
       };
 

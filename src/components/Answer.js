@@ -11,28 +11,29 @@ export default function Answer(props) {
 
     e.preventDefault();
     const userAnswersOne = vote === 'OptionOne';
-    console.log(userAnswersOne)
-    console.log(vote)
-    if (userAnswersOne){
+    console.log(userAnswersOne);
+    console.log(vote);
+    if (userAnswersOne) {
       console.log('predispatch');
-    dispatch(
-      handleSetAnswerOne({
-        questionId: props.questionId,
-        userId: props.loggedInUser.id,
-        vote: 'optionOne'
-      })
-    );}
-    
-    if (!userAnswersOne){
+      dispatch(
+        handleSetAnswerOne({
+          questionId: props.questionId,
+          userId: props.loggedInUser.id,
+          vote: 'optionOne',
+        })
+      );
+    }
+
+    if (!userAnswersOne) {
       console.log('predispatch');
-    dispatch(
-      handleSetAnswerTwo({
-        questionId: props.questionId,
-        userId: props.loggedInUser.id,
-        vote: 'optionTwo'
-      })
-    );}
-    
+      dispatch(
+        handleSetAnswerTwo({
+          questionId: props.questionId,
+          userId: props.loggedInUser.id,
+          vote: 'optionTwo',
+        })
+      );
+    }
   }
 
   const userAnsweredOne = props.optionOne.votes.includes(props.loggedInUser.id);
