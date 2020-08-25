@@ -13,6 +13,8 @@ import Notfound from './Notfound';
 export default function App() {
   const dispatch = useDispatch();
 
+
+
   useEffect(() => {
     dispatch(populateStore());
   }, [dispatch]);
@@ -26,14 +28,14 @@ export default function App() {
         <Route path="/" exact>
           {loggedInUser ? <Dashboard loggedInUser={loggedInUser} /> : <Login />}
         </Route>
-        <Route path="/leaderboard/" exact>
+        <Route path="/leaderboard" exact>
           {loggedInUser ? (
             <Leaderboard loggedInUser={loggedInUser} />
           ) : (
             <Login />
           )}
         </Route>
-        <Route path="/new-question/" exact>
+        <Route path="/add" exact>
           {loggedInUser ? (
             <NewQuestion loggedInUser={loggedInUser} />
           ) : (
