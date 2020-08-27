@@ -1,19 +1,34 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { handleSetAnswerOne, handleSetAnswerTwo } from '../actions/shared';
+/**
+ * Answer Component
+ * 
+ * @description The answer component is a children of Poll component and display the poll answers. If the poll is already answered by the current user it display stats, if it's not answered it provides the form to answer it.
+ * @export Component
+ * @param {Object} props
+ * @param {String} props.questionId the poll id
+ * @param {Object} props.optionOne the poll optionOne object
+ * @param {Object} props.optionTwo the poll optionTwo object
+ * @param {Object} props.loggedInUser the user currently logged in
+ * @returns Children components
+ */
 export default function Answer(props) {
   const dispatch = useDispatch();
-
+  // Use React useState Hook to handle form state: it's relative to this component and not needed in the rest of the app, and it doesn't need to be persistent if the user navigate aroud the app, so using redux to handle it would be overkill 
   const [vote, setVote] = useState([]);
-
+  // Handle form submit
   function handleVote(e) {
+    // TODO: delete
     alert("E' stato inserito un nome: " + vote);
 
     e.preventDefault();
     const userAnswersOne = vote === 'OptionOne';
+    // TODO: delete
     console.log(userAnswersOne);
     console.log(vote);
     if (userAnswersOne) {
+      // TODO: delete
       console.log('predispatch');
       dispatch(
         handleSetAnswerOne({
@@ -25,6 +40,7 @@ export default function Answer(props) {
     }
 
     if (!userAnswersOne) {
+      // TODO: delete
       console.log('predispatch');
       dispatch(
         handleSetAnswerTwo({
@@ -36,13 +52,17 @@ export default function Answer(props) {
     }
   }
 
+  // Decide if the user already answered the poll and what his answer was
   const userAnsweredOne = props.optionOne.votes.includes(props.loggedInUser.id);
   const userAnsweredTwo = props.optionTwo.votes.includes(props.loggedInUser.id);
+  // TODO: delete
   console.log(userAnsweredOne);
   console.log(userAnsweredTwo);
   const userAnswered = userAnsweredOne || userAnsweredTwo;
+  // TODO: delete
   console.log(userAnswered, 'answered');
 
+  // Given two numbers, returns the percentage of the first relative to the total
   function votesPercentage(a, b) {
     if (a === 0) return 0;
     if (b === 0) return 100;

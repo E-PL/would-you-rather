@@ -1,6 +1,16 @@
 import React from 'react';
 import Avatar from './Avatar';
 
+/**
+ * UserStats Component
+ *
+ * @description The userStats component display user informations on the leaderboard
+ * @export Component
+ * @param {Object} props
+ * @param {String} props.id The user id
+ * @param {Object} props.users The users object from the store
+ * @returns Children components
+ */
 export default function UserStats(props) {
   return (
     <div>
