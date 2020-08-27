@@ -2,9 +2,20 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import UserStats from './Userstats';
 
-
+// TODO: fix component name, remove unused props
+/**
+ * Leaderboard Component
+ *
+ * @description The Leaderboard component is rendered at /leaderboard route, it sorts users by answers + questions and return a list of UserStats components ordered by score.
+ * @export Component
+ * @param {Object} props
+ * @param {Object} props.loggedInUser The user currently logged in
+ * @returns Children components
+ */
 export default function Dashboard(props) {
+  // Get the user object from Redux store
   const users = useSelector((state) => state.users);
+  // Extract an array of user ids
   const usersIds = Object.keys(users);
   return (
     <main>
