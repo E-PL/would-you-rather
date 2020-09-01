@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 /**
  * Avatar component
  *
@@ -11,7 +10,6 @@ import React from 'react';
  * @returns Children components
  */
 export default function Avatar(props) {
-
   return (
     <img
       src={props.avatarUrl}
@@ -19,5 +17,4 @@ export default function Avatar(props) {
       style={{ width: '100px' }}
     ></img>
   );
-  
 }

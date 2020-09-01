@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import UserStats from './Userstats';
 
-// TODO: fix component name, remove unused props
 /**
  * Leaderboard Component
  *
@@ -12,7 +11,7 @@ import UserStats from './Userstats';
  * @param {Object} props.loggedInUser The user currently logged in
  * @returns Children components
  */
-export default function Dashboard(props) {
+export default function Leaderboard() {
   // Get the user object from Redux store
   const users = useSelector((state) => state.users);
   // Extract an array of user ids
@@ -22,8 +21,9 @@ export default function Dashboard(props) {
       {usersIds
         .sort((a, b) => {
           return (
-            (Object.keys(users[b].answers).length + users[b].questions.length) -
-           ( Object.keys(users[a].answers).length + users[a].questions.length)
+            Object.keys(users[b].answers).length +
+            users[b].questions.length -
+            (Object.keys(users[a].answers).length + users[a].questions.length)
           );
         })
         .map((userId) => {
