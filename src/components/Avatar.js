@@ -14,10 +14,7 @@ export default function Avatar(props) {
   console.log(props.avatarUrl);
   return (
       <>
-      {
-        //TODO: remove
-      }
-      <hr/>
+
       {
       //TODO: add alt text
       }
