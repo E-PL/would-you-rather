@@ -46,10 +46,10 @@ export default function users(state = {}, action) {
 
           answers: Object.keys(state[action.userId].answers)
             .filter((key) => {
-              return key != action.questionId;
+              return key !== action.questionId;
             })
             .reduce((obj, key) => {
-              return (obj[key] = state[action.userId].answers[key]), obj;
+              return ( obj[key] = state[action.userId].answers[key], obj )
             }, {}),
         },
       };

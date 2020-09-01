@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { handleSetAnswer, handleSetAnswerTwo } from '../actions/shared';
+import { handleSetAnswer } from '../actions/shared';
 
 /**
  * Answer Component

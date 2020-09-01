@@ -123,7 +123,6 @@ function generateUID() {
 }
 
 export function _getUsers() {
-  console.log('useee');
   return new Promise((res, rej) => {
     setTimeout(() => res({ ...users }), 1000);
   });
