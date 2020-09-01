@@ -36,60 +36,29 @@ export function populateStore() {
 }
 
 /**
- * handleSetAnswerOne
+ * handleSetAnswer
  *
- * @description The handleSetAnswerOne thunk returns a functional async action that optimistically update state and calls the mock API to save user vote for option one votes. If the api call fails store change is reverted. 
+ * @description The handleSetAnswer thunk returns a functional async action that optimistically update state and calls the mock API to save user vote. If the api call fails store change is reverted. 
  * @export function
  * @param {Object} info { userId, questionId, vote } 
  * @returns Functional async action
  */
-// TODO: it would be nice to refactor this with just handleSetAnswer
-export function handleSetAnswerOne(info) {
+export function handleSetAnswer(info) {
   return (dispatch) => {
-    dispatch(setQuestionAnswerOne(info));
+    const votingA = info.vote === 'optionOne';
+    votingA ? dispatch(setQuestionAnswerOne(info)) : dispatch(setQuestionAnswerTwo(info));
     dispatch(addUserAnswer(info));
     const { userId: authedUser, questionId: qid, vote: answer } = info;
     const answerData = { authedUser, qid, answer };
     saveAnswer(answerData)
-      .then((result) => {
-        // TODO: remove
-        console.log('Answer saved');
-      })
       .catch((error) => {
-        dispatch(unsetQuestionAnswerOne(info));
+       votingA ? dispatch(unsetQuestionAnswerOne(info)) : dispatch(unsetQuestionAnswerTwo(info));
         dispatch(removeUserAnswer(info));
-        // TODO: remove and replace with an alert
-        console.error('Error saving answer ', error);
+        alert('Sorry, there was an error saving your answer, please try again.');
       });
   };
 }
 
-/**
- * handleSetAnswerTwo
- *
- * TODO: see above
- * @description The handleSetAnswerOne thunk returns a functional async action that optimistically update state and calls the mock API to save user vote for option two votes. If the api call fails store change is reverted. 
- * @export function
- * @param {Object} info { userId, questionId, vote }
- * @returns Functional async action
- */
-export function handleSetAnswerTwo(info) {
-  return (dispatch) => {
-    dispatch(setQuestionAnswerTwo(info));
-    dispatch(addUserAnswer(info));
-    const { userId: authedUser, questionId: qid, vote: answer } = info;
-    const answerData = { authedUser, qid, answer };
-    saveAnswer(answerData)
-      .then((result) => {
-        console.log('Answer saved');
-      })
-      .catch((error) => {
-        dispatch(unsetQuestionAnswerTwo(info));
-        dispatch(removeUserAnswer(info));
-        console.error('Error saving answer ', error);
-      });
-  };
-}
 
 /**
  * handleSaveQuestion

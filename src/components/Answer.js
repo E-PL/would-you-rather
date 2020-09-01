@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { handleSetAnswerOne, handleSetAnswerTwo } from '../actions/shared';
+import { handleSetAnswer, handleSetAnswerTwo } from '../actions/shared';
 
 /**
  * Answer Component
@@ -26,7 +26,7 @@ export default function Answer(props) {
 
     if (userAnswersOne) {
       dispatch(
-        handleSetAnswerOne({
+        handleSetAnswer({
           questionId: props.questionId,
           userId: props.loggedInUser.id,
           vote: 'optionOne',
@@ -36,7 +36,7 @@ export default function Answer(props) {
 
     if (!userAnswersOne) {
       dispatch(
-        handleSetAnswerTwo({
+        handleSetAnswer({
           questionId: props.questionId,
           userId: props.loggedInUser.id,
           vote: 'optionTwo',
