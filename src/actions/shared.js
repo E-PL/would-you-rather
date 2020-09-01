@@ -5,7 +5,7 @@ Import actions
 */
 import {
   setUsers,
-  saveUserAnswer,
+  addUserAnswer,
   unsaveUserAnswer,
   setUserQuestions,
 } from './users';
@@ -47,7 +47,7 @@ export function populateStore() {
 export function handleSetAnswerOne(info) {
   return (dispatch) => {
     dispatch(setQuestionAnswerOne(info));
-    dispatch(saveUserAnswer(info));
+    dispatch(addUserAnswer(info));
     const { userId: authedUser, questionId: qid, vote: answer } = info;
     const answerData = { authedUser, qid, answer };
     saveAnswer(answerData)
@@ -76,7 +76,7 @@ export function handleSetAnswerOne(info) {
 export function handleSetAnswerTwo(info) {
   return (dispatch) => {
     dispatch(setQuestionAnswerTwo(info));
-    dispatch(saveUserAnswer(info));
+    dispatch(addUserAnswer(info));
     const { userId: authedUser, questionId: qid, vote: answer } = info;
     const answerData = { authedUser, qid, answer };
     saveAnswer(answerData)

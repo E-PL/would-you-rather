@@ -3,7 +3,7 @@
 * TODO: fix names, see action creators TODOS
 */
 export const SET_USERS = 'RECEIVE_USERS';
-export const SET_USER_ANSWER = 'SET_USER_ANSWER';
+export const ADD_USER_ANSWER = 'SET_USER_ANSWER';
 export const UNSET_USER_ANSWER = 'UNSET_USER_ANSWER';
 export const SET_USER_QUESTIONS = 'SET_USER_QUESTIONS';
 
@@ -13,8 +13,7 @@ export const SET_USER_QUESTIONS = 'SET_USER_QUESTIONS';
 
 /**
  * setUsers action crerator
- * TODO: fix name, it is called after the api that get the data, but what the action does is setting the user slice of the store, so it should really be setUsers
- *
+ * 
  * @export Action
  * @description The setUsers action creator returns the action that will be dispatched after the mock api call to save the users object to the store
  * @param {Object} users The users object retrieved from the mock API
@@ -27,17 +26,16 @@ export function setUsers(users) {
   };
 }
 /**
- * saveUserAnswer action creator
- * TODO: fix name, the action adds an answer 
+ * addUserAnswer action creator
  *
- * @description The saveUserAnswer action creator returns the action that will be dispatched to save the user vote in the users slice of the store.
+ * @description The addUserAnswer action creator returns the action that will be dispatched to save the user vote in the users slice of the store.
  * @export Action
  * @param {Object} answerData { questionId, userId, vote }
  * @returns the plain action object
  */
-export function saveUserAnswer({ questionId, userId, vote }) {
+export function addUserAnswer({ questionId, userId, vote }) {
   return {
-    type: SET_USER_ANSWER,
+    type: ADD_USER_ANSWER,
     userId, questionId, vote,
   };
 }

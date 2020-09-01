@@ -1,7 +1,7 @@
 // Import action types
 import {
   SET_USERS,
-  SET_USER_ANSWER,
+  ADD_USER_ANSWER,
   UNSET_USER_ANSWER,
   SET_USER_QUESTIONS,
 } from '../actions/users';
@@ -24,7 +24,7 @@ export default function users(state = {}, action) {
         ...action.users,
       };
     // The action dispatched when the user answers a poll, adds a property to the store.users[userId].answers object using the question id as key and the vote as value
-    case SET_USER_ANSWER:
+    case ADD_USER_ANSWER:
       return {
         ...state,
         [action.userId]: {
