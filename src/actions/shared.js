@@ -4,7 +4,7 @@ import { fetchInitialData, saveAnswer, saveQuestion } from '../utils/api';
 Import actions 
 */
 import {
-  getUsers,
+  setUsers,
   saveUserAnswer,
   unsaveUserAnswer,
   setUserQuestions,
@@ -28,7 +28,7 @@ import {
 export function populateStore() {
   return (dispatch) => {
     return fetchInitialData().then(({ users, questions }) => {
-      dispatch(getUsers(users));
+      dispatch(setUsers(users));
       dispatch(setQuestions(questions));
     });
     // TODO: add error handling

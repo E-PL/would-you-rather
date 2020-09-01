@@ -2,7 +2,7 @@
 * Action types
 * TODO: fix names, see action creators TODOS
 */
-export const RECEIVE_USERS = 'RECEIVE_USERS';
+export const SET_USERS = 'RECEIVE_USERS';
 export const SET_USER_ANSWER = 'SET_USER_ANSWER';
 export const UNSET_USER_ANSWER = 'UNSET_USER_ANSWER';
 export const SET_USER_QUESTIONS = 'SET_USER_QUESTIONS';
@@ -12,17 +12,17 @@ export const SET_USER_QUESTIONS = 'SET_USER_QUESTIONS';
 */
 
 /**
- * getUsers action crerator
+ * setUsers action crerator
  * TODO: fix name, it is called after the api that get the data, but what the action does is setting the user slice of the store, so it should really be setUsers
  *
  * @export Action
- * @description The getUsers action creator returns the action that will be dispatched after the mock api call to save the users object to the store
+ * @description The setUsers action creator returns the action that will be dispatched after the mock api call to save the users object to the store
  * @param {Object} users The users object retrieved from the mock API
  * @returns the plain action object
  */
-export function getUsers(users) {
+export function setUsers(users) {
   return {
-    type: RECEIVE_USERS,
+    type: SET_USERS,
     users,
   };
 }

@@ -1,6 +1,6 @@
 // Import action types
 import {
-  RECEIVE_USERS,
+  SET_USERS,
   SET_USER_ANSWER,
   UNSET_USER_ANSWER,
   SET_USER_QUESTIONS,
@@ -18,7 +18,7 @@ import {
 export default function users(state = {}, action) {
   switch (action.type) {
     // The action dispatched at first load save all users to the store
-    case RECEIVE_USERS:
+    case SET_USERS:
       return {
         ...state,
         ...action.users,
