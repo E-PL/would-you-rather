@@ -4,7 +4,7 @@
 */
 export const SET_USERS = 'RECEIVE_USERS';
 export const ADD_USER_ANSWER = 'SET_USER_ANSWER';
-export const UNSET_USER_ANSWER = 'UNSET_USER_ANSWER';
+export const REMOVE_USER_ANSWER = 'REMOVE_USER_ANSWER';
 export const SET_USER_QUESTIONS = 'SET_USER_QUESTIONS';
 
 /*
@@ -40,17 +40,16 @@ export function addUserAnswer({ questionId, userId, vote }) {
   };
 }
 /**
- * unSaveUserAnswer action creator
- * TODO: fix name, the action remove an answer
+ * removeUserAnswer action creator
  *
- * @description The saveUserAnswer action creator returns the action that will be dispatched to remove the user vote from the users slice of the store. This is necessary because I'm optimistically updating the store on user vote, this action will be dispatched if the api fails.
+ * @description The removeUserAnswer action creator returns the action that will be dispatched to remove the user vote from the users slice of the store. This is necessary because I'm optimistically updating the store on user vote, this action will be dispatched if the api fails.
  * @export Action
  * @param {Object} answerData { questionId, userId, vote }
  * @returns the plain action object
  */
-export function unsaveUserAnswer({ questionId, userId, vote }) {
+export function removeUserAnswer({ questionId, userId, vote }) {
   return {
-    type: UNSET_USER_ANSWER,
+    type: REMOVE_USER_ANSWER,
     userId, questionId, vote,
   };
 }

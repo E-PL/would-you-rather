@@ -2,7 +2,7 @@
 import {
   SET_USERS,
   ADD_USER_ANSWER,
-  UNSET_USER_ANSWER,
+  REMOVE_USER_ANSWER,
   SET_USER_QUESTIONS,
 } from '../actions/users';
 
@@ -38,7 +38,7 @@ export default function users(state = {}, action) {
       };
 
     // As the previous action is dispatched before calling the mock api, here's the action to revert the change should the mock API call fail
-    case UNSET_USER_ANSWER:
+    case REMOVE_USER_ANSWER:
       return {
         ...state,
         [action.userId]: {

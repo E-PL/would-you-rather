@@ -6,7 +6,7 @@ Import actions
 import {
   setUsers,
   addUserAnswer,
-  unsaveUserAnswer,
+  removeUserAnswer,
   setUserQuestions,
 } from './users';
 import {
@@ -57,7 +57,7 @@ export function handleSetAnswerOne(info) {
       })
       .catch((error) => {
         dispatch(unsetQuestionAnswerOne(info));
-        dispatch(unsaveUserAnswer(info));
+        dispatch(removeUserAnswer(info));
         // TODO: remove and replace with an alert
         console.error('Error saving answer ', error);
       });
@@ -85,7 +85,7 @@ export function handleSetAnswerTwo(info) {
       })
       .catch((error) => {
         dispatch(unsetQuestionAnswerTwo(info));
-        dispatch(unsaveUserAnswer(info));
+        dispatch(removeUserAnswer(info));
         console.error('Error saving answer ', error);
       });
   };
