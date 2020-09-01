@@ -22,21 +22,22 @@ export default function Poll(props) {
   const match = useRouteMatch();
   // Extract the final part of the url that shoud be a valid question id
   const questionId = path.pathname.replace(match.path, '');
-  // TODO: delete this
-  debugger;
+
+
+
   // Subscribe to questions store and get the question object that have the id from the final part of the url
   const question = useSelector((state) => state.questions[questionId]);
   // Get the users from the store
   const users = useSelector((state) => state.users);
-  // TODO: delete
-  console.log(question);
+
+
 
   return (
     <>
       {questionId}
       {question ? (
         <>
-        <Avatar avatarUrl={users[question.author].avatarURL}/>
+        <Avatar name={users[question.author].name} avatarUrl={users[question.author].avatarURL}/>
           <h2>{users[question.author].name} asks:</h2>
 
           <Answer

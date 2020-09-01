@@ -15,7 +15,9 @@ import Notfound from './Notfound';
  *
  * @description The App component loads initial data from the mock API and saves it to the Redux store in an useEffect hook,
  * it checks if the user is logged in and handles routing using react-router.
- * @export App Component
+
+ * @export Component
+
  * @returns Children components
  */
 export default function App() {
