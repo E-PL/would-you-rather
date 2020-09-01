@@ -30,8 +30,10 @@ export function populateStore() {
     return fetchInitialData().then(({ users, questions }) => {
       dispatch(setUsers(users));
       dispatch(setQuestions(questions));
-    });
-    // TODO: add error handling
+    })
+    .catch( () => {
+      alert('Sorry, there was an error retrieving data, please refresh the page.');
+    })
   };
 }
 
