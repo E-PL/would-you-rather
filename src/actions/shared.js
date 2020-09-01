@@ -93,7 +93,6 @@ export function handleSetAnswerTwo(info) {
 
 /**
  * handleSaveQuestion
- * TODO: remove console.log
  *
  * @description The handleSaveQuestion thunk returns a functional async action that is dispatched when the user submits a new poll. It calls the moch API first, and if there's no errors, it dispatch the actions to update the store.
  * @export function
@@ -104,12 +103,10 @@ export function handleSaveQuestion(questionData) {
   return (dispatch) => {
     return saveQuestion(questionData)
       .then((res) => {
-        console.log('API q mock done', res);
         dispatch(setQuestion(res));
         dispatch(addUserQuestion(res.id, res.author));
       })
       .catch((err) => {
-        console.log('Api q mock KO', err);
         alert('Sorry, there was an error saving your poll, please try again.');
       });
   };
