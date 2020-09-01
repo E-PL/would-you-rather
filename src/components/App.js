@@ -6,7 +6,7 @@ import Dashboard from './Dashboard';
 import Leaderboard from './Leaderboard';
 import NewQuestion from './Newquestion';
 import Login from './Login';
-import Nav from './Nav';
+import MyNav from './Nav';
 import Poll from './Poll';
 import Notfound from './Notfound';
 
@@ -35,7 +35,7 @@ export default function App() {
 
   return (
     <Router>
-      <Nav loggedInUser={loggedInUser} />
+      <MyNav loggedInUser={loggedInUser} />
       <Switch>
         <Route path="/" exact>
           {loggedInUser ? <Dashboard loggedInUser={loggedInUser} /> : <Login />}
