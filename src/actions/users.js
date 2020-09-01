@@ -1,11 +1,10 @@
 /*
 * Action types
-* TODO: fix names, see action creators TODOS
 */
 export const SET_USERS = 'RECEIVE_USERS';
 export const ADD_USER_ANSWER = 'SET_USER_ANSWER';
 export const REMOVE_USER_ANSWER = 'REMOVE_USER_ANSWER';
-export const SET_USER_QUESTIONS = 'SET_USER_QUESTIONS';
+export const ADD_USER_QUESTION = 'ADD_USER_QUESTION';
 
 /*
 * Action creators involving store.users
@@ -54,18 +53,17 @@ export function removeUserAnswer({ questionId, userId, vote }) {
   };
 }
 /**
- * setUserQuestions action creator
- * TODO: fix name, the action adds a question
+ * addUserQuestion action creator
  *
- * @description The setUserQuestions action creator returns the action that will be dispatched to add the question id in the user object questions property array.
+ * @description The addUserQuestion action creator returns the action that will be dispatched to add the question id in the user object questions property array.
  * @export Action
  * @param {String} questionId The id of the new question
  * @param {String} userId The user id
  * @returns the plain action object
  */
-export function setUserQuestions( questionId, userId ) {
+export function addUserQuestion( questionId, userId ) {
   return {
-    type: SET_USER_QUESTIONS,
+    type: ADD_USER_QUESTION,
     userId, questionId,
   };
 }

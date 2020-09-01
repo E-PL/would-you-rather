@@ -3,7 +3,7 @@ import {
   SET_USERS,
   ADD_USER_ANSWER,
   REMOVE_USER_ANSWER,
-  SET_USER_QUESTIONS,
+  ADD_USER_QUESTION,
 } from '../actions/users';
 
 /**
@@ -55,7 +55,7 @@ export default function users(state = {}, action) {
       };
 
       // The action dispatched when the user save a new poll, adds the question id to store.users[userId].questions array
-      case SET_USER_QUESTIONS:
+      case ADD_USER_QUESTION:
         return {
           ...state,
           [action.userId]: {

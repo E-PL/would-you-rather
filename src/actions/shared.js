@@ -7,7 +7,7 @@ import {
   setUsers,
   addUserAnswer,
   removeUserAnswer,
-  setUserQuestions,
+  addUserQuestion,
 } from './users';
 import {
   setQuestions,
@@ -106,7 +106,7 @@ export function handleSaveQuestion(questionData) {
       .then((res) => {
         console.log('API q mock done', res);
         dispatch(setQuestion(res));
-        dispatch(setUserQuestions(res.id, res.author));
+        dispatch(addUserQuestion(res.id, res.author));
       })
       .catch((err) => {
         console.log('Api q mock KO', err);
