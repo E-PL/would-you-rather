@@ -41,14 +41,13 @@ export function setDisplayAnsweredQuestions(display) {
 
 /**
  * logout
- * TODO: Remove param
  * 
  * @description The logout action creator returns the action that will be dispatched when the user log out
  * @export Action
  * @param {undefined} logout
  * @returns The plain action creator object
  */
-export function logout(logout) {
+export function logout() {
   return {
     type: LOGOUT,
   };
