@@ -10,7 +10,7 @@ import {
   setUserQuestions,
 } from './users';
 import {
-  getQuestions,
+  setQuestions,
   setQuestionAnswerOne,
   unsetQuestionAnswerOne,
   setQuestionAnswerTwo,
@@ -29,7 +29,7 @@ export function populateStore() {
   return (dispatch) => {
     return fetchInitialData().then(({ users, questions }) => {
       dispatch(getUsers(users));
-      dispatch(getQuestions(questions));
+      dispatch(setQuestions(questions));
     });
     // TODO: add error handling
   };

@@ -2,7 +2,7 @@
 * Action types
 * TODO: fix names, see action creators TODOS
 */
-export const GET_QUESTIONS = 'GET_QUESTIONS';
+export const SET_QUESTIONS = 'GET_QUESTIONS';
 export const SET_QUESTION_ANSWER_ONE = 'SET_ANSWER_ONE';
 export const UNSET_QUESTION_ANSWER_ONE = 'UNSET_ANSWER_ONE';
 export const SET_QUESTION_ANSWER_TWO = 'SET_ANSWER_TWO';
@@ -14,17 +14,17 @@ export const SET_QUESTION = 'SET_QUESTION';
 */
 
 /**
- * getQuestions action creator
+ * setQuestions action creator
  * TODO: fix name
  *
- * @description The getQuestion action creator return the action that will be dispatched after the mock API call to save the questions object to the store.
+ * @description The setQuestions action creator return the action that will be dispatched after the mock API call to save the questions object to the store.
  * @export Action
  * @param {Object} questions The questions object retrieved from the mock API
  * @returns The plain action object
  */
-export function getQuestions(questions) {
+export function setQuestions(questions) {
   return {
-    type: GET_QUESTIONS,
+    type: SET_QUESTIONS,
     questions,
   };
 }

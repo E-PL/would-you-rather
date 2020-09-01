@@ -1,6 +1,6 @@
 // Import action types
 // TODO: oneline, I'm importing from the same file, why did I shift + alt + arrowed down this?
-import { GET_QUESTIONS } from '../actions/questions';
+import { SET_QUESTIONS } from '../actions/questions';
 import { SET_QUESTION_ANSWER_ONE } from '../actions/questions';
 import { UNSET_QUESTION_ANSWER_ONE } from '../actions/questions';
 import { SET_QUESTION_ANSWER_TWO } from '../actions/questions';
@@ -19,7 +19,7 @@ import { SET_QUESTION } from '../actions/questions';
 export default function questions(state = {}, action) {
   switch (action.type) {
     // The action dispatched at first load save all questions to the store
-    case GET_QUESTIONS:
+    case SET_QUESTIONS:
       return {
         ...state,
         ...action.questions,
