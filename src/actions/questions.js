@@ -1,6 +1,5 @@
 /*
 * Action types
-* TODO: fix names, see action creators TODOS
 */
 export const SET_QUESTIONS = 'GET_QUESTIONS';
 export const SET_QUESTION_ANSWER_ONE = 'SET_ANSWER_ONE';
@@ -15,7 +14,6 @@ export const SET_QUESTION = 'SET_QUESTION';
 
 /**
  * setQuestions action creator
- * TODO: fix name
  *
  * @description The setQuestions action creator return the action that will be dispatched after the mock API call to save the questions object to the store.
  * @export Action
