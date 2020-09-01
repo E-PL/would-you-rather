@@ -21,7 +21,7 @@ export default function PollCard(props) {
   });
   return (
     <>
-      <Avatar avatarUrl={props.users[props.question.author].avatarURL}/>
+      <Avatar name={props.users[props.question.author].name} avatarUrl={props.users[props.question.author].avatarURL}/>
       <h2>
         {props.users[props.question.author].name} asked on {questionDateString}
       </h2>

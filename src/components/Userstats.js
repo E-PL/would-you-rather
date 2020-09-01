@@ -15,7 +15,7 @@ export default function UserStats(props) {
   return (
     <div>
       <h2>{props.users[props.id].name}</h2>
-      <Avatar avatarUrl={props.users[props.id].avatarURL} />
+      <Avatar avatarUrl={props.users[props.id].avatarURL} name={props.users[props.id].name}  />
       <p>Questions: {props.users[props.id].questions.length}</p>
       <p>Answers: {Object.keys(props.users[props.id].answers).length}</p>
       <p>

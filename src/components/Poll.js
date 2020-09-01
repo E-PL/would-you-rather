@@ -33,7 +33,7 @@ export default function Poll(props) {
       {questionId}
       {question ? (
         <>
-        <Avatar avatarUrl={users[question.author].avatarURL}/>
+        <Avatar name={users[question.author].name} avatarUrl={users[question.author].avatarURL}/>
           <h2>{users[question.author].name} asks:</h2>
 
           <Answer
