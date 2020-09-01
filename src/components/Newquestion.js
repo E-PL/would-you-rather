@@ -21,13 +21,17 @@ export default function NewQuestion(props) {
   const dispatch = useDispatch();
   // When the user types something in the textareas their content is saved to component state
   function handleOptionOneTextInput(text) {
+
     setOptionOneText(text);
   }
   function handleOptionTwoTextInput(text) {
+
     setOptionTwoText(text);
   }
   // On form submission dispatch the action that save the new poll in the Redux store
   function handleSubmit(e) {
+
+
 
     e.preventDefault();
     const questionData = {
@@ -38,6 +42,8 @@ export default function NewQuestion(props) {
     dispatch(handleSaveQuestion(questionData)).then((res) => {
       // After saving the new poll on the Redux store, set the component state in order to redirect to homepage
       setSubmitted(true);
+
+
     });
   }
   return submitted ? (

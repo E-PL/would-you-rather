@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import UserStats from './Userstats';
 
+
+
 /**
  * Leaderboard Component
  *
@@ -11,7 +13,9 @@ import UserStats from './Userstats';
  * @param {Object} props.loggedInUser The user currently logged in
  * @returns Children components
  */
+
 export default function Leaderboard() {
+
   // Get the user object from Redux store
   const users = useSelector((state) => state.users);
   // Extract an array of user ids

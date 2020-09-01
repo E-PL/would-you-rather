@@ -23,10 +23,14 @@ export default function Poll(props) {
   // Extract the final part of the url that shoud be a valid question id
   const questionId = path.pathname.replace(match.path, '');
 
+
+
   // Subscribe to questions store and get the question object that have the id from the final part of the url
   const question = useSelector((state) => state.questions[questionId]);
   // Get the users from the store
   const users = useSelector((state) => state.users);
+
+
 
   return (
     <>
