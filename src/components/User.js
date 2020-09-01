@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setLoggedInUser } from '../actions/loggedinuser';
+import { Button, Col } from 'react-bootstrap';
 /**
  * User component
  *
@@ -15,14 +16,14 @@ export default function User(props) {
   const dispatch = useDispatch();
 
   return (
-    <li>
-      <button
+    <Col sm="12">
+      <Button variant="outline-success" className="m-2"
         onClick={() => {
           dispatch(setLoggedInUser(props.user));
         }}
       >
         {props.name}
-      </button>
-    </li>
+      </Button>
+    </Col>
   );
 }

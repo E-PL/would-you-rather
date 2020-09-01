@@ -1,5 +1,6 @@
 import React from 'react';
 import UserList from './Userlist';
+import { Container } from 'react-bootstrap';
 
 /**
  * Login component
@@ -10,8 +11,8 @@ import UserList from './Userlist';
  */
 export default function Login() {
   return (
-    <main>
+    <Container as="main">
       <UserList />
-    </main>
+    </Container>
   );
 }
