@@ -28,10 +28,13 @@ export default function Poll(props) {
   const question = useSelector((state) => state.questions[questionId]);
   // Get the users from the store
   const users = useSelector((state) => state.users);
-  let questionDate = new Date(question.timestamp);
-  let questionDateString = questionDate.toLocaleDateString('en-US', {
-    timeZone: 'UTC',
-  });
+  let questionDate = question ? new Date(question.timestamp) : null;
+  let questionDateString = question
+    ? questionDate.toLocaleDateString('en-US', {
+        timeZone: 'UTC',
+      })
+    : null;
+
   return (
     <>
       {question ? (
