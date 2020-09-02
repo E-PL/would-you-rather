@@ -15,7 +15,7 @@ export default function Avatar(props) {
   return (
 
     <img
-      src={props.avatarUrl}
+      src={"/would-you-rather/" + props.avatarUrl}
       alt={props.name + ' avatar'}
       style={{ width: '80%' }}
     ></img>

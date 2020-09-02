@@ -37,24 +37,24 @@ export default function App() {
     <Router>
       <MyNav loggedInUser={loggedInUser} />
       <Switch>
-        <Route path="/" exact>
+        <Route path="/would-you-rather/" exact>
           {loggedInUser ? <Dashboard loggedInUser={loggedInUser} /> : <Login />}
         </Route>
-        <Route path="/leaderboard" exact>
+        <Route path="/would-you-rather/leaderboard" exact>
           {loggedInUser ? (
             <Leaderboard loggedInUser={loggedInUser} />
           ) : (
             <Login />
           )}
         </Route>
-        <Route path="/add" exact>
+        <Route path="/would-you-rather/add" exact>
           {loggedInUser ? (
             <NewQuestion loggedInUser={loggedInUser} />
           ) : (
             <Login />
           )}
         </Route>
-        <Route path="/questions/">
+        <Route path="/would-you-rather/questions/">
           {loggedInUser ? <Poll loggedInUser={loggedInUser} /> : <Login />}
         </Route>
 

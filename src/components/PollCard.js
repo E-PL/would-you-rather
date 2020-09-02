@@ -42,7 +42,7 @@ export default function PollCard(props) {
         
         <Link className="float-right"
           to={{
-            pathname: `/questions/${props.question.id}`,
+            pathname: `/would-you-rather/questions/${props.question.id}`,
           }}
         >
           <Button variant="success">View poll</Button>

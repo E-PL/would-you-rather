@@ -20,17 +20,17 @@ export default function MyNav(props) {
   return (
     <Nav fill variant="pills" defaultActiveKey={location.pathname}>
       <Nav.Item>
-        <Nav.Link as={Link} to="/" eventKey="/">
+        <Nav.Link as={Link} to="/would-you-rather/" eventKey="/would-you-rather/">
           Dashboard
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link as={Link} to="/add" eventKey="/add">
+        <Nav.Link as={Link} to="/would-you-rather/add" eventKey="/would-you-rather/add">
           New poll
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link as={Link} to="/leaderboard" eventKey="/leaderboard">
+        <Nav.Link as={Link} to="/would-you-rather/leaderboard" eventKey="/would-you-rather/leaderboard">
           Leaderboard
         </Nav.Link>
       </Nav.Item>

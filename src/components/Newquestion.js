@@ -43,7 +43,7 @@ export default function NewQuestion(props) {
   return submitted ? (
     <Redirect
       to={{
-        pathname: '/',
+        pathname: '/would-you-rather/',
       }}
     />
   ) : (
