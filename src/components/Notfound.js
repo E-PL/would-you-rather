@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Container, Row, Col } from 'react-bootstrap';
 /**
  * Notfound component
  *
@@ -9,9 +9,12 @@ import React from 'react';
  */
 export default function Notfound() {
   return (
-    //TODO: maybe add some more content
-    <>
-      <h2>Not found 404</h2>
-    </>
+    <Container as="main">
+      <Row className="mt-4">
+        <Col className="text-center">
+          <h2 className="mt-4">Not found 404</h2>
+        </Col>
+      </Row>
+    </Container>
   );
 }
