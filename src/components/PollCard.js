@@ -20,7 +20,7 @@ export default function PollCard(props) {
     timeZone: 'UTC',
   });
   return (
-    <Card style={{ minWidth: '222px' }} className="mb-4 text-center">
+    <Card style={{ minWidth: '222px', maxWidth: '300px', margin: 'auto' }} className="mb-4 text-center">
       <Card.Body>
       <Card.Header>
       {props.users[props.question.author].name}   

@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { handleSetAnswer } from '../actions/shared';
+import { Form, Button } from 'react-bootstrap';
+import PollStats from './PollStats';
 
 /**
  * Answer Component
  *
-
-
- * @description The answer component is a children of Poll component and display the poll answers. If the poll is already answered by the current user it display stats, if it's not answered it provides the form to answer it.
+ * @description The Answer component is a children of Poll component and display the poll answers. If the poll is already answered by the current user it display stats, if it's not answered it provides the form to answer it.
  * @export Component
  * @param {Object} props
  * @param {String} props.questionId the poll id
@@ -19,17 +18,16 @@ import { handleSetAnswer } from '../actions/shared';
  */
 export default function Answer(props) {
   const dispatch = useDispatch();
-
+console.log(props)
   // Use React useState Hook to handle form state: it's relative to this component and not needed in the rest of the app, and it doesn't need to be persistent if the user navigate aroud the app, so using redux to handle it would be overkill
   const [vote, setVote] = useState([]);
   // Handle form submit
-  
+
   function handleVote(e) {
     e.preventDefault();
     const userAnswersOne = vote === 'OptionOne';
 
     if (userAnswersOne) {
-
       dispatch(
         handleSetAnswer({
           questionId: props.questionId,
@@ -40,8 +38,6 @@ export default function Answer(props) {
     }
 
     if (!userAnswersOne) {
-
-
       dispatch(
         handleSetAnswer({
           questionId: props.questionId,
@@ -58,7 +54,6 @@ export default function Answer(props) {
 
   const userAnswered = userAnsweredOne || userAnsweredTwo;
 
-
   // Given two numbers, returns the percentage of the first relative to the total
   function votesPercentage(a, b) {
     if (a === 0) return 0;
@@ -69,57 +64,53 @@ export default function Answer(props) {
 
   return (
     <>
-      <h2>Would you rather...</h2>
-      <form onSubmit={(e) => handleVote(e)}>
-        {userAnsweredOne && <span>Your answer:</span>}
-        <input
+      <Form onSubmit={(e) => handleVote(e)}>
+        <Form.Check
+          inline
+          label={props.optionOne.text}
           type="radio"
-          id="option-one-input"
-          name="answer"
-          value="OptionOne"
+          id={`answer-one-radio`}
           defaultChecked={userAnsweredOne}
           disabled={userAnswered}
           onChange={(e) => setVote(e.target.value)}
+          value="OptionOne"
         />
-        <label htmlFor="option-one-input">{props.optionOne.text}</label>
-
-        {userAnswered && (
-          <span>
-            {props.optionOne.votes.length} votes -{'  '}
-            {votesPercentage(
-              props.optionOne.votes.length,
-              props.optionTwo.votes.length
-            )}
-            %
-          </span>
-        )}
-        {userAnsweredTwo && <span> Your answer:</span>}
-        <input
+       
+        <Form.Check
+          inline
+          label={props.optionTwo.text}
           type="radio"
-          id="option-two-input"
-          name="answer"
-          value="optionTwo"
+          id={`answer-two-radio`}
           defaultChecked={userAnsweredTwo}
           disabled={userAnswered}
           onChange={(e) => setVote(e.target.value)}
+          value="OptionTwo"
         />
-        <label htmlFor="option-two-input">{props.optionTwo.text}</label>
-        {userAnswered && (
-          <span>
-            {props.optionTwo.votes.length} votes -{'  '}
-            {votesPercentage(
-              props.optionTwo.votes.length,
-              props.optionOne.votes.length
-            )}
-            %
-          </span>
-        )}
+
         {!userAnswered && (
-          <button type="submit" value="submit">
-            Vote
-          </button>
+          <Button className="mt-4" variant="success" type="submit" value="submit">
+            Vote now!
+          </Button>
         )}
-      </form>
+      </Form>
+
+      {userAnswered && (
+        <PollStats
+          votesForOne={props.optionOne.votes.length}
+          votesForTwo={props.optionTwo.votes.length}
+          textForOne={props.optionOne.text}
+          textForTwo={props.optionTwo.text}
+          percentageForOne={votesPercentage(
+            props.optionOne.votes.length,
+            props.optionTwo.votes.length
+          )}
+          percentageForTwo={votesPercentage(
+            props.optionTwo.votes.length,
+            props.optionOne.votes.length
+          )}
+          userAnsweredOne={userAnsweredOne}
+        />
+      )}
     </>
   );
 }
