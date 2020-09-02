@@ -37,11 +37,19 @@ This project is part of the [Udacity](https://udacity.com) React Nanodegree prog
 
 Bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
 
+<<<<<<< HEAD
 Use [react-router](https://github.com/ReactTraining/react-router#readme) for routing
 
 Use [redux-logger](https://github.com/theaqua/redux-logger) for logging actions
 
 Use [redux-thunk](https://github.com/reduxjs/redux-thunk) for handling async actions
+=======
+Use [react-router] (https://github.com/ReactTraining/react-router#readme) for routing
+
+Use [redux-logger] (https://github.com/theaqua/redux-logger) for logging actions
+
+Use [redux-thunk] (https://github.com/reduxjs/redux-thunk) for handling async actions
+>>>>>>> d47217b47d2c39b75f75ebd36475c5b7eddfd741
 
 Use [react-bootstrap](https://github.com/react-bootstrap/react-bootstrap) for styling
 
