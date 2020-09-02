@@ -1,5 +1,6 @@
 import React from 'react';
 import PollCard from './PollCard';
+import { Row, Col } from 'react-bootstrap';
 
 /**
  * QuestionList component
@@ -21,49 +22,61 @@ export default function QuestionsList(props) {
     props.users[props.loggedInUser.id].answers
   );
   return (
-    <main>
-      <h2>{props.answered ? 'Answered polls' : 'Unanswered polls'}</h2>
-      {props.answered
-        ? questionsKeys
-            .filter((questionId) => {
-              return answeredQuestionsKeys.includes(questionId);
-            })
-            .sort((a, b) => {
-              return (
-                props.questions[b].timestamp - props.questions[a].timestamp
-              );
-            })
-            .map((filteredQuestionId) => {
-              return (
-                <PollCard
-                  key={filteredQuestionId}
-                  id={filteredQuestionId}
-                  question={props.questions[filteredQuestionId]}
-                  loggedInUser={props.loggedInUser}
-                  users={props.users}
-                />
-              );
-            })
-        : questionsKeys
-            .filter((questionId) => {
-              return !answeredQuestionsKeys.includes(questionId);
-            })
-            .sort((a, b) => {
-              return (
-                props.questions[b].timestamp - props.questions[a].timestamp
-              );
-            })
-            .map((filteredQuestionId) => {
-              return (
-                <PollCard
-                  key={filteredQuestionId}
-                  id={filteredQuestionId}
-                  question={props.questions[filteredQuestionId]}
-                  loggedInUser={props.loggedInUser}
-                  users={props.users}
-                />
-              );
-            })}
-    </main>
+    <>
+      <Row>
+        <Col>
+          <p className="text-center mb-4">
+            {props.answered
+              ? 'Answered polls selected'
+              : 'Unanswered polls selected'}
+          </p>
+        </Col>
+      </Row>
+      <Row>
+        {props.answered
+          ? questionsKeys
+              .filter((questionId) => {
+                return answeredQuestionsKeys.includes(questionId);
+              })
+              .sort((a, b) => {
+                return (
+                  props.questions[b].timestamp - props.questions[a].timestamp
+                );
+              })
+              .map((filteredQuestionId) => {
+                return (
+                  <Col key={filteredQuestionId}>
+                    <PollCard
+                      id={filteredQuestionId}
+                      question={props.questions[filteredQuestionId]}
+                      loggedInUser={props.loggedInUser}
+                      users={props.users}
+                    />
+                  </Col>
+                );
+              })
+          : questionsKeys
+              .filter((questionId) => {
+                return !answeredQuestionsKeys.includes(questionId);
+              })
+              .sort((a, b) => {
+                return (
+                  props.questions[b].timestamp - props.questions[a].timestamp
+                );
+              })
+              .map((filteredQuestionId) => {
+                return (
+                  <Col key={filteredQuestionId}>
+                    <PollCard 
+                      id={filteredQuestionId}
+                      question={props.questions[filteredQuestionId]}
+                      loggedInUser={props.loggedInUser}
+                      users={props.users}
+                    />
+                  </Col>
+                );
+              })}
+      </Row>
+    </>
   );
 }

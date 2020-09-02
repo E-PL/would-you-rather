@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Avatar from './Avatar'
-
+import Avatar from './Avatar';
+import { Card, Button } from 'react-bootstrap';
 /**
  * PollCard component
  *
@@ -20,23 +20,34 @@ export default function PollCard(props) {
     timeZone: 'UTC',
   });
   return (
-    <>
-      <Avatar name={props.users[props.question.author].name} avatarUrl={props.users[props.question.author].avatarURL}/>
-      <h2>
-        {props.users[props.question.author].name} asked on {questionDateString}
-      </h2>
-      <p>Would you rather:</p>
-      <p>{props.question.optionOne.text}</p>
-      <p>or</p>
-      <p>{props.question.optionTwo.text}</p>
-      <p>?</p>
-      <Link
-        to={{
-          pathname: `/questions/${props.question.id}`,
-        }}
-      >
-        View poll
-      </Link>
-    </>
+    <Card style={{ minWidth: '222px' }} className="mb-4 text-center">
+      <Card.Body>
+      <Card.Header>
+      {props.users[props.question.author].name}   
+      </Card.Header>
+        <Card.Img
+          variant="top"
+          as={Avatar}
+          name={props.users[props.question.author].name}
+          avatarUrl={props.users[props.question.author].avatarURL}
+        />
+        <Card.Text className="mb-3 mt-3">
+       asked on {questionDateString}
+        </Card.Text>
+        <Card.Subtitle className="mb-3 mt-3 text-muted">
+        Would you rather...
+        </Card.Subtitle>
+       
+
+        
+        <Link className="float-right"
+          to={{
+            pathname: `/questions/${props.question.id}`,
+          }}
+        >
+          <Button variant="success">View poll</Button>
+        </Link>
+      </Card.Body>
+    </Card>
   );
 }

@@ -17,7 +17,7 @@ export default function Avatar(props) {
     <img
       src={props.avatarUrl}
       alt={props.name + ' avatar'}
-      style={{ width: '100px' }}
+      style={{ width: '80%' }}
     ></img>
 
   );
