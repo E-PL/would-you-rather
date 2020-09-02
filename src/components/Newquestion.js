@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { handleSaveQuestion } from '../actions/shared';
 import { Redirect } from 'react-router-dom';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 /**
  * NewQuestion component
- * 
- * @description The NewQuestion component is rendered at /add, it renders a form that save the new poll in the store, and redirect to homepage when the poll is submitted. 
+ *
+ * @description The NewQuestion component is rendered at /add, it renders a form that save the new poll in the store, and redirect to homepage when the poll is submitted.
  * @export Component
  * @param {Object} props
  * @param {Object} props.loggedInUser The user presently logged in
@@ -21,18 +22,13 @@ export default function NewQuestion(props) {
   const dispatch = useDispatch();
   // When the user types something in the textareas their content is saved to component state
   function handleOptionOneTextInput(text) {
-
     setOptionOneText(text);
   }
   function handleOptionTwoTextInput(text) {
-
     setOptionTwoText(text);
   }
   // On form submission dispatch the action that save the new poll in the Redux store
   function handleSubmit(e) {
-
-
-
     e.preventDefault();
     const questionData = {
       author: props.loggedInUser.id,
@@ -42,8 +38,6 @@ export default function NewQuestion(props) {
     dispatch(handleSaveQuestion(questionData)).then((res) => {
       // After saving the new poll on the Redux store, set the component state in order to redirect to homepage
       setSubmitted(true);
-
-
     });
   }
   return submitted ? (
@@ -53,31 +47,47 @@ export default function NewQuestion(props) {
       }}
     />
   ) : (
-    <main>
-      <h2>Your question:</h2>
-
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label htmlFor="option-one">Would you rather...</label>
-        <textarea
-          onChange={(e) => handleOptionOneTextInput(e.target.value)}
-          id="option-one"
-          value={optionOneText}
-          maxLength={400}
-          required
-        ></textarea>
-        <label htmlFor="option-two"> or </label>
-        <textarea
-          onChange={(e) => handleOptionTwoTextInput(e.target.value)}
-          id="option-two"
-          value={optionTwoText}
-          maxLength={400}
-          required
-        ></textarea>
-
-        <button type="submit" value="submit">
-          Save poll
-        </button>
-      </form>
-    </main>
+    <Container as="main">
+      <Row>
+        <Col className="m-4 text-center">
+          <h2>Your question:</h2>
+        </Col>
+      </Row>
+      <Row  className="justify-content-center">
+        <Col className="m-8 text-center " xs="12" sm="8">
+          <Form onSubmit={(e) => handleSubmit(e)}>
+            <Form.Group controlId="formOptionOne">
+              <Form.Label>Would you rather..</Form.Label>
+              <Form.Control
+                size="lg"
+                as="textarea"
+                rows="3"
+                placeholder="Enter option one"
+                onChange={(e) => handleOptionOneTextInput(e.target.value)}
+                value={optionOneText}
+                maxLength={400}
+                required
+              />
+            </Form.Group>
+            <Form.Group controlId="formOptionTwo">
+              <Form.Label>or..</Form.Label>
+              <Form.Control
+                size="lg"
+                as="textarea"
+                rows="3"
+                placeholder="Enter option two"
+                onChange={(e) => handleOptionTwoTextInput(e.target.value)}
+                value={optionTwoText}
+                maxLength={400}
+                required
+              />
+            </Form.Group>
+            <Button type="submit" className="mt-4" variant="success" value="submit">
+              Save poll
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 }
