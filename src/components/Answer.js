@@ -18,7 +18,6 @@ import PollStats from './PollStats';
  */
 export default function Answer(props) {
   const dispatch = useDispatch();
-console.log(props)
   // Use React useState Hook to handle form state: it's relative to this component and not needed in the rest of the app, and it doesn't need to be persistent if the user navigate aroud the app, so using redux to handle it would be overkill
   const [vote, setVote] = useState([]);
   // Handle form submit

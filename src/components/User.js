@@ -17,7 +17,7 @@ export default function User(props) {
 
   return (
     <Col sm="12">
-      <Button variant="outline-success" className="m-2"
+      <Button variant="success" className="m-2"
         onClick={() => {
           dispatch(setLoggedInUser(props.user));
         }}

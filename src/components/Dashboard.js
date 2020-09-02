@@ -34,7 +34,7 @@ export default function Dashboard(props) {
       <Row className="justify-content-center  mb-4">
         <Col sx="4" className="text-right m-2">
           <Button
-            variant="outline-success"
+            variant="success"
             disabled={!showAnswered && true}
             onClick={() => {
               dispatch(setDisplayAnsweredQuestions(null));
@@ -45,7 +45,7 @@ export default function Dashboard(props) {
         </Col>
         <Col sx="4" className="text-left m-2">
           <Button
-            variant="outline-success"
+            variant="success"
             disabled={showAnswered && true}
             onClick={() => {
               dispatch(setDisplayAnsweredQuestions(true));

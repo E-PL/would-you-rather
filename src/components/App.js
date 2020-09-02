@@ -60,7 +60,7 @@ export default function App() {
 
         <Route path="*" component={Notfound} />
       </Switch>
-      <footer>footer</footer>
+  
     </Router>
   );
 }
