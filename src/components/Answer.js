@@ -73,6 +73,7 @@ export default function Answer(props) {
           disabled={userAnswered}
           onChange={(e) => setVote(e.target.value)}
           value="OptionOne"
+          checked={vote === "OptionOne" }
         />
        
         <Form.Check
@@ -84,6 +85,7 @@ export default function Answer(props) {
           disabled={userAnswered}
           onChange={(e) => setVote(e.target.value)}
           value="OptionTwo"
+          checked={vote === "OptionTwo" }
         />
 
         {!userAnswered && (
