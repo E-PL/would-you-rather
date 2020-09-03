@@ -28,7 +28,7 @@ Browse to: (https://e-pl.github.io/would-you-rather/)
 
  * download and unzip the compressed folder or clone the repository: `git clone git@github.com:E-PL/would-you-rather.git`
  * install all project dependencies: `npm install`
- * preview the project: `npm run`
+ * preview the project: `npm start`
  * build the project: `npm run build`
 
 ### App
